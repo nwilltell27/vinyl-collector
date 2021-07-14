@@ -3,14 +3,16 @@
 
 <h1>Vinyl List</h1>
 
-{% for record in vinyl %}
+{% for vinyl in vinyls %}
   <div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ record.name }}</span>
-      <p>Artist: {{ record.artist }}</p>
-      <p>Album Name: {{ record.album_name }}</p>
-      <p>Release Year: {{ record.release_year }}</p>
-    </div>
+    <a href="{% url 'detail' vinyl.id %}">
+        <div class="card-content">
+            <span class="card-title">{{ vinyl.artist }}</span>
+            <p>Album: {{ vinyl.album_name }}</p>
+            <p>Genre: {{ vinyl.genre }}</p>
+            <p>Release Year: {{ vinyl.release_year }}</p>
+        </div>
+    </a>
   </div>
 {% endfor %}
 

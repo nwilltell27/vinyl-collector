@@ -1,21 +1,6 @@
 from django.shortcuts import render
 from .models import Vinyl
 
-""" 
-class Record:
-    def __init__(self, artist, album_name, genre, release_year):
-        self.artist = artist
-        self.album_name = album_name
-        self.genre = genre
-        self.release_year = release_year
-
-vinyl = [
-    Record('Lettuce', 'Resonate', 'Funk', 2020),
-    Record('Vulfpeck', 'Live at Madison Square Garden', 'Funk', 2019),
-    Record('Pigeons Playing Ping Pong', 'Pizazz', 'Funk', 2017),
-] 
-"""
-
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -24,5 +9,9 @@ def about(request):
     return render(request, 'about.html')
 
 def vinyl_index(request):
-    vinyl = Vinyl.objects.all()
-    return render(request, 'vinyl/index.html', { 'vinyl': vinyl })
+    vinyls = Vinyl.objects.all()
+    return render(request, 'vinyl/index.html', { 'vinyls': vinyls })
+
+def vinyls_detail(request, vinyl_id):
+    vinyl = Vinyl.objects.get(id=vinyl_id)
+    return render(request, 'vinyl/detail.html', { 'vinyl': vinyl })
