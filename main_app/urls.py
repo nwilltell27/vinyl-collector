@@ -4,6 +4,8 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
-    path('view_vinyl/', views.vinyl_index, name='index'),
+    path('vinyls/', views.vinyl_index, name='index'),
     path('vinyls/<int:vinyl_id>/', views.vinyls_detail, name='detail'),
+    # Vinyl CRUD
+    path('vinyls/create/', views.VinylCreate.as_view(), name='vinyls_create'),
 ]

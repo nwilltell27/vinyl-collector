@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Vinyl
 
 # Create your views here.
@@ -15,3 +16,8 @@ def vinyl_index(request):
 def vinyls_detail(request, vinyl_id):
     vinyl = Vinyl.objects.get(id=vinyl_id)
     return render(request, 'vinyl/detail.html', { 'vinyl': vinyl })
+
+class VinylCreate(CreateView):
+    model = Vinyl
+    fields = ['artist', 'album_name', 'genre', 'release_year'] # can also use '__all__'
+    success_url = '/vinyls/'
