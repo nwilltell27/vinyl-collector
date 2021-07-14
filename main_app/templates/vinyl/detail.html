@@ -10,6 +10,10 @@
         <p>Genre: {{ vinyl.genre }}</p>
         <p>Release Year: {{ vinyl.release_year }}</p>
     </div>
+    <div>
+        <a href="{% url 'vinyls_update' vinyl.id %}">Edit</a>
+        <a href="{% url 'vinyls_delete' vinyl.id %}">Delete</a>
+    </div>
 </div>
 
 {% endblock %}

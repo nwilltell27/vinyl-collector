@@ -2,6 +2,12 @@
 
 {% block content %}
 
+    {% if object %}
+        <h1>Edit <span class="teal-text">{{ object.artist }}</span></h1>
+    {% else %}
+        <h1>Add Vinyl</h1>
+    {% endif %}
+
     <form action="" method="POST">
         {% csrf_token %}
         <table>
