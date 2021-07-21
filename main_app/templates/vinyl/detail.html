@@ -46,5 +46,15 @@
         </table>
     </div>
 </div>
+
+<script>
+    var dateEl = document.getElementById('id_date');
+    M.Datepicker.init(dateEl, {
+        format: 'mmm-dd-yyyy',
+        defaultDate: new Date(),
+        setDefaultDate: true,
+        autoClose: true
+    });
+</script>
     
 {% endblock %}
