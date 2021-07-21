@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Vinyl
+from .forms import TouringForm
 
 # Create your views here.
 def home(request):
@@ -15,7 +16,10 @@ def vinyl_index(request):
 
 def vinyls_detail(request, vinyl_id):
     vinyl = Vinyl.objects.get(id=vinyl_id)
-    return render(request, 'vinyl/detail.html', { 'vinyl': vinyl })
+    touring_form = TouringForm()
+    return render(request, 'vinyl/detail.html', { 
+        'vinyl': vinyl, 'touring_form': touring_form
+    })
 
 class VinylCreate(CreateView):
     model = Vinyl
