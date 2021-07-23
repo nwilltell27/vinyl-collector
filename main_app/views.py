@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Vinyl
 from .forms import TouringForm
@@ -33,3 +33,12 @@ class VinylUpdate(UpdateView):
 class VinylDelete(DeleteView):
     model = Vinyl
     success_url = '/vinyls/'
+
+def add_touring(request, vinyl_id):
+    form = TouringForm(request.POST)
+    if form.is_valid():
+        new_touring = form.save(commit=False)
+        new_touring.vinyl_id = vinyl_id
+        new_touring.save()
+    return redirect('detail', vinyl_id=vinyl_id)
+
